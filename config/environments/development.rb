@@ -1,4 +1,21 @@
 Rails.application.configure do
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = 'localhost:3000'   
+  # Use this on the cloud IDE.
+  config.action_mailer.default_url_options = { host: host }
+
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :user_name => '8b5bd94a12e6b8',
+  :password => '34b23d894b74bf',
+  :address => 'smtp.mailtrap.io',
+  :domain => 'smtp.mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
+}
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
