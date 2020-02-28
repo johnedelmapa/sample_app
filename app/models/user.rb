@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :likes, dependent: :destroy
+
   has_many :microposts, dependent: :destroy
   has_many :active_relationships,  class_name:  "Relationship",
                                    foreign_key: "follower_id",
@@ -71,6 +73,11 @@ class User < ApplicationRecord
   # Follows a user.
   def follow(other_user)
     following << other_user
+  end
+
+   # Follows a user.
+   def like(other_post)
+    likes << other_post
   end
 
   # Unfollows a user.
